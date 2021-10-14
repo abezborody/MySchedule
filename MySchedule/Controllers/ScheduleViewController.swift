@@ -11,6 +11,9 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
     
+    let test = ["oo", "ooo"]
+    
+    
     var calendarHeightConstraint: NSLayoutConstraint!
     
     private var calendar: FSCalendar = {
@@ -23,7 +26,7 @@ class ScheduleViewController: UIViewController {
     let showHideButton: UIButton = {
         let button = UIButton()
         button.setTitle("Open calendar", for: .normal)
-        button.setTitleColor(UIColor.systemGray, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderWidth = 1
@@ -32,7 +35,16 @@ class ScheduleViewController: UIViewController {
       //  button.layer.borderColor = CGColor.init(gray: 1.0, alpha: 0.5)
         return button
     } ()
-
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    let idScheduleCell = "idScheduleCell"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +55,13 @@ class ScheduleViewController: UIViewController {
         calendar.dataSource = self
         calendar.scope = .week
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: idScheduleCell)
+        
         setConstraints()
         swipeAction()
+        
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
     }
@@ -88,6 +105,36 @@ class ScheduleViewController: UIViewController {
     
 }
 
+// MARK: UITableViewDelegate, UITableViewDataSource
+
+extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: idScheduleCell, for: indexPath) as! ScheduleTableViewCell
+        
+        return cell
+    }
+    
+
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
+    }
+}
+
 // MARK: FSCalendarDataSource, FSCalendarDelegate
 
 extension ScheduleViewController: FSCalendarDataSource, FSCalendarDelegate {
@@ -125,6 +172,14 @@ extension ScheduleViewController {
             showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             showHideButton.widthAnchor.constraint(equalToConstant: 120),
             showHideButton.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: showHideButton.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
         
     }
