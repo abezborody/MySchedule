@@ -8,20 +8,26 @@
 import Foundation
 import UIKit
 
+
+
 class ScheduleTableViewCell: UITableViewCell {
     
-    let lessonName = UILabel(text: "Soft development", font: .boldSystemFont(ofSize: 24), alignment: .left)
-    let teacherName = UILabel(text: "John Ive", font: .systemFont(ofSize: 24), alignment: .right)
+
+    
+    let lessonName = UILabel(text: "Soft development", font: .boldSystemFont(ofSize: 18), alignment: .left)
+    let teacherName = UILabel(text: "John Ive", font: .systemFont(ofSize: 18), alignment: .right)
     let lessonTime = UILabel(text: "08:00", font: .boldSystemFont(ofSize: 18), alignment: .left)
-    let typeLabel = UILabel(text: "Тип:", font: .systemFont(ofSize: 12), alignment: .right)
-    let lessonType = UILabel(text: "Лекция", font: .boldSystemFont(ofSize: 12), alignment: .left)
-    let buildingLabel = UILabel(text: "Корпус:", font: .systemFont(ofSize: 12), alignment: .right)
-    let lessonBuilding = UILabel(text: "2", font: .boldSystemFont(ofSize: 12), alignment: .left)
-    let audLabel = UILabel(text: "Аудитория:", font: .systemFont(ofSize: 12), alignment: .right)
-    let lessonAud = UILabel(text: "245", font: .boldSystemFont(ofSize: 12), alignment: .left)
+    let typeLabel = UILabel(text: "Тип:", font: .systemFont(ofSize: 16), alignment: .right)
+    let lessonType = UILabel(text: "Лекция", font: .boldSystemFont(ofSize: 16), alignment: .left)
+    let buildingLabel = UILabel(text: "Корпус:", font: .systemFont(ofSize: 16), alignment: .right)
+    let lessonBuilding = UILabel(text: "2", font: .boldSystemFont(ofSize: 16), alignment: .left)
+    let audLabel = UILabel(text: "Аудитория:", font: .systemFont(ofSize: 16), alignment: .right)
+    let lessonAud = UILabel(text: "245", font: .boldSystemFont(ofSize: 16), alignment: .left)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.selectionStyle = .none
         setConstraints()
     }
     
@@ -31,6 +37,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     func setConstraints() {
         
+        
         let topStackView = UIStackView(arrangedSubviews: [lessonName,teacherName], axis: .horizontal, spacing: 16, distribution: .fillEqually)
 
         
@@ -38,7 +45,7 @@ class ScheduleTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             topStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             topStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            topStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            topStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             topStackView.heightAnchor.constraint(equalToConstant: 24)
         ])
         
@@ -57,8 +64,8 @@ class ScheduleTableViewCell: UITableViewCell {
         self.addSubview(bottomStackView)
         NSLayoutConstraint.activate([
             bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            bottomStackView.leadingAnchor.constraint(equalTo: lessonTime.trailingAnchor, constant: 8),
-            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            bottomStackView.leadingAnchor.constraint(equalTo: lessonTime.trailingAnchor, constant: 16),
+            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             bottomStackView.heightAnchor.constraint(equalToConstant: 24)
         ])
     }

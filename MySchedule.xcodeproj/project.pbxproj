@@ -19,6 +19,7 @@
 		3A3C53072716086B0065D494 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C53062716086B0065D494 /* ScheduleTableViewCell.swift */; };
 		3A3C530B2716142F0065D494 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C530A2716142F0065D494 /* UIStackView.swift */; };
 		3A3C530D271868FC0065D494 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C530C271868FC0065D494 /* UILabel.swift */; };
+		3A3C5311271871110065D494 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5310271871110065D494 /* TasksTableViewCell.swift */; };
 		4E6BEFEFCAC4E0482A5EB491 /* Pods_MyScheledule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C729F69DAAFDD93941ABE0EC /* Pods_MyScheledule.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		3A3C53062716086B0065D494 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		3A3C530A2716142F0065D494 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		3A3C530C271868FC0065D494 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		3A3C5310271871110065D494 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		7FCCD843F8EEA8230E500A01 /* Pods-MyScheledule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyScheledule.release.xcconfig"; path = "Target Support Files/Pods-MyScheledule/Pods-MyScheledule.release.xcconfig"; sourceTree = "<group>"; };
 		88D411BF2B2D4F45F29DD873 /* Pods-MyScheledule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyScheledule.debug.xcconfig"; path = "Target Support Files/Pods-MyScheledule/Pods-MyScheledule.debug.xcconfig"; sourceTree = "<group>"; };
 		C729F69DAAFDD93941ABE0EC /* Pods_MyScheledule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyScheledule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				3A3C53062716086B0065D494 /* ScheduleTableViewCell.swift */,
+				3A3C5310271871110065D494 /* TasksTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				3A061BFF271476160085AE92 /* AppDelegate.swift in Sources */,
 				3A3C53072716086B0065D494 /* ScheduleTableViewCell.swift in Sources */,
 				3A061C01271476160085AE92 /* SceneDelegate.swift in Sources */,
+				3A3C5311271871110065D494 /* TasksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

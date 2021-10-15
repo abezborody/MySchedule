@@ -43,6 +43,10 @@ class TasksViewController: UIViewController {
         calendar.dataSource = self
         calendar.scope = .week
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: idTasksCell)
+        
         setConstraints()
         swipeAction()
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
@@ -58,6 +62,15 @@ class TasksViewController: UIViewController {
             showHideButton.setTitle("Open calendar", for: .normal)
         }
     }
+    
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.bounces = false
+        return tableView
+    }()
+    
+    let idTasksCell = "idTasksCell"
     
     // MARK: SwipeGestureRecognizer
     
@@ -87,6 +100,37 @@ class TasksViewController: UIViewController {
     }
     
 }
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+
+extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: idTasksCell, for: indexPath) as! TasksTableViewCell
+        
+        return cell
+    }
+    
+
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
+    }
+}
+
 
 // MARK: FSCalendarDataSource, FSCalendarDelegate
 
@@ -125,6 +169,14 @@ extension TasksViewController {
             showHideButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             showHideButton.widthAnchor.constraint(equalToConstant: 120),
             showHideButton.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: showHideButton.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
         
     }

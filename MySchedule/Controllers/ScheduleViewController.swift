@@ -39,6 +39,7 @@ class ScheduleViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.bounces = false
         return tableView
     }()
     
